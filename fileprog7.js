@@ -1,5 +1,5 @@
  var http=require('http');
- var fname = require('./modulereadfile1.js');
+ var mod1 = require('./module1.js');
  var events=require('events');
  var eventEmitter=new events.EventEmitter();
  var progStart=function(){
@@ -15,8 +15,11 @@
 			 {
 			 	eventEmitter.emit('start');
 			 	res.writeHead(200,{'Content-Type':'text/html'});
-			 	res.write(fname.readAFile('angularworld.html'));
-			 	res.end()
+			 	console.log(mod1.readAFile('f1.sh').toString());
+			 	res.write("<h1>"+mod1.displayDate()+"</h1>");
+			 	res.write("<p>This is code loaded from another page</p>");
+			 	res.write(mod1.readAFile('angularworld.html'));
+			 	res.end();
 			 	eventEmitter.emit('end');
 			 }).listen(8080);
  
